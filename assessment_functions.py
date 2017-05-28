@@ -20,21 +20,49 @@ def hometown(town_name):
     '''Takes  town name as a string and decides if it's my hometown
     >>> hometown("houston")
     True
+    'houston'
+
+    >>> hometown("chicago")
+    False
     '''
 
     if town_name == "houston":
-        return True
+        print True
+        return town_name
+    else:
+        print False
 
 #    (b) Write a function that takes a first and last name as arguments and
 #        returns the concatenation of the two names in one string.
 
+def combined_name(first_name, last_name):
+    '''combines the first and last name
 
+    >>> combined_name('nura', 'renke')
+    'nura renke' 
+    '''
+
+    first_name = first_name.strip('')
+    last_name = last_name.strip('')
+    return "{} {}".format(first_name, last_name)
 
 #    (c) Write a function that takes a home town, a first name, and a last name
 #        as arguments, calls both functions from part (a) and (b) and prints
 #        "Hi, 'full name here', we're from the same place!", or "Hi 'full name
 #        here', I'd like to visit 'town name here'!" depending on what the function
 #        from part (a) evaluates to.
+
+full_name = combined_name('nura', 'renke')
+town_name = hometown('houston')
+
+def combined_sentence(name):
+    '''combines the results from the combine_name() and hometown() into a sentence.
+
+    >>> combined_sentence(full_name)
+    "Hi nura renke, I'd like to visit houston"
+    '''
+    return "Hi " + full_name + ", I'd like to visit " + town_name
+    
 
 ###############################################################################
 
