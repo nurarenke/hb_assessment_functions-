@@ -39,11 +39,11 @@ def combined_name(first_name, last_name):
     '''combines the first and last name
 
     >>> combined_name('nura', 'renke')
-    'nura renke' 
+    'nura renke'
     '''
 
-    first_name = first_name.strip('')
-    last_name = last_name.strip('')
+    first_name = first_name
+    last_name = last_name
     return "{} {}".format(first_name, last_name)
 
 #    (c) Write a function that takes a home town, a first name, and a last name
@@ -108,8 +108,12 @@ def is_berry(fruit):
     False
 
     """
+    fruit_list = ["strawberry", "raspberry", "blackberry"]
 
-    pass
+    if fruit in fruit_list:
+        return True
+    else:
+        return False
 
 
 def shipping_cost(fruit):
@@ -122,8 +126,11 @@ def shipping_cost(fruit):
     5
 
     """
+    if is_berry(fruit) == False:
+        return 5
 
-    pass
+    else:
+        return 0
 
 
 def append_to_list(lst, num):
@@ -134,8 +141,7 @@ def append_to_list(lst, num):
     [3, 5, 7, 2]
 
     """
-
-    pass
+    return lst + [num]
 
 
 def calculate_price(FILL_ME_IN):
