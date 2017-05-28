@@ -20,17 +20,15 @@ def hometown(town_name):
     '''Takes  town name as a string and decides if it's my hometown
     >>> hometown("houston")
     True
-    'houston'
 
     >>> hometown("chicago")
     False
     '''
 
     if town_name == "houston":
-        print True
-        return town_name
+        return True
     else:
-        print False
+        return False
 
 #    (b) Write a function that takes a first and last name as arguments and
 #        returns the concatenation of the two names in one string.
@@ -42,9 +40,7 @@ def combined_name(first_name, last_name):
     'nura renke'
     '''
 
-    first_name = first_name
-    last_name = last_name
-    return "{} {}".format(first_name, last_name)
+    return first_name + " " + last_name
 
 #    (c) Write a function that takes a home town, a first name, and a last name
 #        as arguments, calls both functions from part (a) and (b) and prints
@@ -52,16 +48,21 @@ def combined_name(first_name, last_name):
 #        here', I'd like to visit 'town name here'!" depending on what the function
 #        from part (a) evaluates to.
 
-full_name = combined_name('nura', 'renke')
-town_name = hometown('houston')
-
-def combined_sentence(name):
+def combined_sentence(hometown_name, first_name, last_name):
     '''combines the results from the combine_name() and hometown() into a sentence.
 
-    >>> combined_sentence(full_name)
-    "Hi nura renke, I'd like to visit houston"
+    >>> combined_sentence('houston', 'nura', 'renke')
+    "Hi, nura renke, we're from the same place!"
+
+    >>> combined_sentence('chicago', 'nura', 'renke')
+    "Hi, nura renke, I'd like to visit chicago!"
     '''
-    return "Hi " + full_name + ", I'd like to visit " + town_name
+
+    full_name = combined_name(first_name, last_name)
+    if hometown(hometown_name):
+        return "Hi, " + full_name + ", we're from the same place!"
+    else:
+        return "Hi, " + full_name + ", I'd like to visit " + hometown_name + "!"
     
 
 ###############################################################################
@@ -126,11 +127,10 @@ def shipping_cost(fruit):
     5
 
     """
-    if is_berry(fruit) == False:
-        return 5
-
-    else:
+    if is_berry(fruit):
         return 0
+    else:
+        return 5
 
 
 def append_to_list(lst, num):
@@ -169,7 +169,6 @@ def calculate_price(base_price, state_abbreviation, tax=0.05):
     tax_rate = base_price * tax
     total = base_price + tax_rate
 
-    recycling_fee = 0
     highway_safety_fee = 2
     commonwealth_fund_fee_under_100 = 1
     commonwealth_fund_fee_over_100 = 3
@@ -187,7 +186,7 @@ def calculate_price(base_price, state_abbreviation, tax=0.05):
         total += commonwealth_fund_fee_under_100
         return total
 
-    elif state_abbreviation == "MA" and base_price > 100:
+    elif state_abbreviation == "MA" and base_price >= 100:
         total += commonwealth_fund_fee_over_100
         return total
 
@@ -224,9 +223,7 @@ def unlimited_args_list(input_list, *args):
     for arg in args:
         input_list.append(arg)
     return input_list
-    
 
-unlimited_args_list([1,2,3,4],5,6,7)
 
 #    (b) Make a new function with a nested inner function.
 #        The outer function will take in a word.
@@ -250,7 +247,7 @@ def outer(word):
     '''
     def inner(word):
         return word * 3
-        
+
     word_times_three = inner(word)
     return (word, word_times_three)
 
