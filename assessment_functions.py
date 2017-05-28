@@ -207,6 +207,14 @@ def calculate_price(base_price, state_abbreviation, tax=0.05):
 #        isn't something we've discussed yet in class; you might need to google how to
 #        write a Python function that takes in an arbitrary number of arguments.
 
+def unlimited_args_list(input_list, *args):
+    '''takes unlimited arguments and appends them to a list'''
+    #for loop and call append and each arg to the list
+    return input_list + args
+    print input_list + args
+
+unlimited_args_list([1,2,3,4],4,5,6)
+
 #    (b) Make a new function with a nested inner function.
 #        The outer function will take in a word.
 #        The inner function will multiply that word by 3.
