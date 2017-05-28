@@ -208,12 +208,25 @@ def calculate_price(base_price, state_abbreviation, tax=0.05):
 #        write a Python function that takes in an arbitrary number of arguments.
 
 def unlimited_args_list(input_list, *args):
-    '''takes unlimited arguments and appends them to a list'''
-    #for loop and call append and each arg to the list
-    return input_list + args
-    print input_list + args
+    '''takes unlimited arguments and appends them to a list
 
-unlimited_args_list([1,2,3,4],4,5,6)
+    test to append unlimited number of items:
+
+    >>> unlimited_args_list([1, 2, 3, 4], 5, 6, 7)
+    [1, 2, 3, 4, 5, 6, 7]
+    
+    test to see what happens if you append nothing:
+
+    >>> unlimited_args_list([1, 2, 3, 4])
+    [1, 2, 3, 4]
+    '''
+
+    for arg in args:
+        input_list.append(arg)
+    return input_list
+    
+
+unlimited_args_list([1,2,3,4],5,6,7)
 
 #    (b) Make a new function with a nested inner function.
 #        The outer function will take in a word.
@@ -226,6 +239,20 @@ unlimited_args_list([1,2,3,4],4,5,6)
 
 #        >>> outer("Balloonicorn")
 #        ('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
+
+def outer(word):
+    '''
+    a function that outputs a word, then runs an inner function to multiply
+    the word three times
+
+    >>> outer("Balloonicorn")
+    ('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
+    '''
+    def inner(word):
+        return word * 3
+        
+    word_times_three = inner(word)
+    return (word, word_times_three)
 
 
 ###############################################################################
