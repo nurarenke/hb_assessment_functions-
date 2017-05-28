@@ -144,7 +144,7 @@ def append_to_list(lst, num):
     return lst + [num]
 
 
-def calculate_price(FILL_ME_IN):
+def calculate_price(base_price, state_abbreviation, tax=0.05):
     """Calculate total price of an item, figuring in state taxes and fees.
 
     >>> calculate_price(40, "CA")
@@ -166,8 +166,33 @@ def calculate_price(FILL_ME_IN):
     135.3
 
     """
+    tax_rate = base_price * tax
+    total = base_price + tax_rate
 
-    pass
+    recycling_fee = 0
+    highway_safety_fee = 2
+    commonwealth_fund_fee_under_100 = 1
+    commonwealth_fund_fee_over_100 = 3
+
+    if state_abbreviation == "CA":
+        recycling_fee = total * .03
+        total += recycling_fee
+        return total
+
+    elif state_abbreviation == "PA":
+        total += highway_safety_fee
+        return total
+
+    elif state_abbreviation == "MA" and base_price < 100:
+        total += commonwealth_fund_fee_under_100
+        return total
+
+    elif state_abbreviation == "MA" and base_price > 100:
+        total += commonwealth_fund_fee_over_100
+        return total
+
+    else:
+        return total
 
 
 ###############################################################################
